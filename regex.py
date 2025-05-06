@@ -138,10 +138,10 @@ class RegexFSM:
         return dfs(self.start_state, 0)
 
 if __name__ == "__main__":
-    regex_pattern = "[asdaf-px-z]*a"
+    regex_pattern = "a*4.+hi"
 
     regex_compiled = RegexFSM(regex_pattern)
 
     print(regex_compiled.check_string("aaaaaa4uhi"))  # True
-    print(regex_compiled.check_string("a"))  # True
-    print(regex_compiled.check_string("yyyyya"))  # True
+    print(regex_compiled.check_string("4uhi"))  # True
+    print(regex_compiled.check_string("meow"))  # False
