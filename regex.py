@@ -11,22 +11,13 @@ class State(ABC):
         function checks whether occured character is handled by current ctate
         """
 
-    def check_next(self, next_char: str):
-        for state in self.next_states:
-            if state.check_self(next_char):
-                return state
-        raise NotImplementedError("rejected string")
-
-
 class StartState(State):
     def check_self(self, char):
-        return True
-
+        pass
 
 class TerminationState(State):
     def check_self(self, char):
         return False
-
 
 class DotState(State):
     """
@@ -34,7 +25,6 @@ class DotState(State):
     """
     def check_self(self, char: str):
         return True
-
 
 class AsciiState(State):
     """
@@ -87,10 +77,8 @@ class GroupState(State):
                     i += 2
             i += 1
 
-    
     def check_self(self, char):
         return char in self.accepted_chars
-
 
 class RegexFSM:
     def __init__(self, pattern: str):
