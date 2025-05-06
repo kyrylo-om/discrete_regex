@@ -99,6 +99,8 @@ class RegexFSM:
                 group = pattern[i + 1 : i + end]
                 i += len(group) + 1
                 new_state = GroupState(group)
+            elif char == "*" or char == "+":
+                raise ValueError("Invalid pattern syntax")
             elif char.isascii():
                 new_state = AsciiState(char)
             else:
